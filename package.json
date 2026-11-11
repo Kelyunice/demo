@@ -1,0 +1,12 @@
+
+{
+  "name": "github-actions-practice",
+  "version": "1.0.0",
+  "description": "Learning dependency caching with GitHub Actions",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
