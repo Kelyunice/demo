@@ -1,0 +1,40 @@
+name: CI job
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    if:  github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-slim
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20' # Specify the Node.js version
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-v2
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Build
+        run: npm install
+
+      - name: Test
+        run: echo "code is tested"
+      
+      - name: Deploy
+        run: echo "code is deployed"
