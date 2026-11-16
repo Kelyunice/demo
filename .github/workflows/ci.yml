@@ -71,7 +71,7 @@ jobs:
       - name: Build
         run: echo "Application build successful"
 
-      - name: Test
+    - name: Test
         run: npm test
 
       - name: Perform CodeQL Analysis
