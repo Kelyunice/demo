@@ -69,7 +69,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: echo "Application build successful"
+        run: echo "Application build successful
 
       - name: Test
         run: npm test
